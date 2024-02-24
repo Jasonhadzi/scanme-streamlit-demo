@@ -13,10 +13,20 @@ st.set_page_config(layout="wide")
 
 
 register_heif_opener()
+# Accessing credentials from environment variables
+aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
+aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+aws_default_region = st.secrets["AWS_DEFAULT_REGION"]
 
 # Boto3 clients
-s3_client = boto3.client('s3')
-dynamodb = boto3.resource('dynamodb')
+s3_client = boto3.client('s3',
+    aws_access_key_id=aws_access_key_id, 
+    aws_secret_access_key=aws_secret_access_key, 
+    region_name=aws_default_region)
+dynamodb = boto3.resource('dynamodb',
+    aws_access_key_id=aws_access_key_id, 
+    aws_secret_access_key=aws_secret_access_key, 
+    region_name=aws_default_region)
 
 # API URL
 api_url = 'https://ijkv196dd9.execute-api.eu-west-1.amazonaws.com/dev/v1/upload'
