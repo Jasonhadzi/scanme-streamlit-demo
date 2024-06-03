@@ -46,7 +46,7 @@ api_poll_url = "https://ijkv196dd9.execute-api.eu-west-1.amazonaws.com/dev/v1/ge
 # Streamlit layout
 st.title('ScanMe')
 
-company = st.text_input("Enter Company Name", "testCompanyName")
+company = st.text_input("Enter Your Company's Name (the tool will break if you don't assign a value)", "")
 
 params = {"companyId": company}
 
